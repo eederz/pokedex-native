@@ -1,4 +1,12 @@
-import { View, Text, Image, StyleSheet, Modal, Button, ScrollView } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  Modal,
+  Button,
+  ScrollView,
+} from "react-native";
 import useFetchApi from "../utils/useFetchApi";
 import { useState } from "react";
 
@@ -57,8 +65,11 @@ const PokemonCard = ({ pokemonData }) => {
               </View>
               <Text style={styles.pokemonText}>Habilidades</Text>
               <View style={styles.pokemonSkills}>
-                <Text>Pending Skills</Text>
-             
+                {data.abilities &&
+                  data.abilities.map((pokemon, index) => {
+                    console.log(pokemon);
+                    return <Text>{index}.- {pokemon.ability.name}</Text>;
+                  })}
               </View>
               <View style={styles.buttonContainer}>
                 <Button
